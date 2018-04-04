@@ -10,6 +10,7 @@ return array(
   'cabinet/edit' => 'cabinet/edit',
   'cabinet' => 'cabinet/index',
   'admin/article/delete/([0-9]+)' => 'adminArticle/delete/$1',
+  'admin/article/update/([0-9]+)' => 'adminArticle/update/$1',
   'admin/article/create' => 'adminArticle/create',
   'admin/articles' => 'adminArticle/index',
   'admin' => 'admin/index',

@@ -25,7 +25,7 @@
         <div class="entry__thumb">
           <a href="/article/<?php echo $article['id']; ?>" class="entry__thumb-link">
             <?php if($article['image']): ?>
-                  <img src="<?php echo $_SERVER['DOCUMENT_ROOT'] ."/upload/images/articles/" .$article['image']; ?>" alt="" >
+                  <img src="<?php echo "/upload/images/articles/" .$article['image']; ?>" alt="" >
             <?php endif; ?>
           </a>
         </div>
@@ -34,7 +34,7 @@
           <div class="entry__header">
             
             <div class="entry__date">
-              <a href="/article/<?php echo $article['id']; ?>">December 15, 2017</a>
+              <a href="/article/<?php echo $article['id']; ?>"><?php echo $article['date']; ?></a>
             </div>
             <h1 class="entry__title"><a href="/article/<?php echo $article['id']; ?>"><?php echo $article['title'] ?></a></h1>
           
@@ -158,21 +158,7 @@
       <p>
         Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
       </p>
-      
-      <ul class="about__social">
-        <li>
-          <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        </li>
-        <li>
-          <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        </li>
-        <li>
-          <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        </li>
-        <li>
-          <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-        </li>
-      </ul> <!-- end header__social -->
+
     </div> <!-- end about -->
   
   </div> <!-- end row -->

@@ -9,7 +9,6 @@ class AdminArticleController extends AdminBase
   {
     $categoriesList = array();
     $categoriesList = Category::getCategoriesList();
-    
     self::checkAdmin();
     $articleList = Article::getArticleListAdmin();
     require_once(ROOT . '/views/admin_article/index.php');
@@ -23,12 +22,13 @@ class AdminArticleController extends AdminBase
     
     self::checkAdmin();
     if (isset($_POST['submit'])) {
+      $date = date("d F, Y");
       $options['title'] = $_POST['title'];
       $options['description'] = $_POST['description'];
       $options['content'] = $_POST['content'];
       $options['category_id'] = $_POST['category_id'];
       $options['status'] = $_POST['status'];
-      $options['date'] = date("Y-m-d ");
+      $options['date'] = $date;
   
       if (is_uploaded_file($_FILES['image']['tmp_name'])) {
         $imageName = md5($_FILES['image']['name']) .'.jpg';
@@ -47,6 +47,50 @@ class AdminArticleController extends AdminBase
       }
     }
     require_once(ROOT . '/views/admin_article/create.php');
+    return true;
+  }
+  
+  public static function actionUpdate($id)
+  {
+    $categoriesList = array();
+    $categoriesList = Category::getCategoriesList();
+    
+    self::checkAdmin();
+    
+    $article = Article::getArticleById($id);
+  
+    $options['title'] = $article['title'];
+    $options['description'] = $article['description'];
+    $options['content'] = $article['content'];
+    $options['category_id'] = $article['category_id'];
+    $options['status'] = $article['status'];
+    $options['image'] = $article['image'];
+    
+    if (isset($_POST['submit'])) {
+      $date = date("d F, Y");
+      $options['title'] = $_POST['title'];
+      $options['description'] = $_POST['description'];
+      $options['content'] = $_POST['content'];
+      $options['category_id'] = $_POST['category_id'];
+      $options['status'] = $_POST['status'];
+      
+      if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+        $imageName = md5($_FILES['image']['name']) .'.jpg';
+        $options['image'] = $imageName;
+        move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] ."/upload/images/articles/" .$imageName);
+      }
+      
+      $errors = false;
+      
+      if (!isset($_POST['title']) || !isset($_POST['description']) || !isset($_POST['content'])) {
+        $errors[] = 'Заполните все обязательные поля';
+      }
+      if ($errors == false) {
+        Article::updateArticle($id,$options);
+        header('Location: /admin/articles');
+      }
+    }
+    require_once(ROOT . '/views/admin_article/update.php');
     return true;
   }
   
