@@ -1,11 +1,15 @@
 <?php
 
+include_once(ROOT.'/models/Category.php');
 include_once(ROOT . '/models/User.php');
 
 class UserController
 {
   public function actionRegister()
   {
+  
+    $categoriesList = array();
+    $categoriesList = Category::getCategoriesList();
     
     $name = '';
     $email = '';
@@ -43,6 +47,9 @@ class UserController
   
   public function actionLogin()
   {
+  
+    $categoriesList = array();
+    $categoriesList = Category::getCategoriesList();
     
     $email = '';
     $password = '';

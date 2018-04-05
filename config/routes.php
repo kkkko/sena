@@ -1,5 +1,7 @@
 <?php
 return array(
+  'article/([0-9]+)/add_comment' => 'comment/create/$1',
+  'article/([0-9]+)/delete_comment/([0-9]+)' => 'comment/delete/$1/$2',
   'article/([0-9]+)' => 'article/view/$1',
   'category/([0-9]+)/page-([0-9]+)' => 'category/view/$1/$2',
   'category/([0-9]+)' => 'category/view/$1',

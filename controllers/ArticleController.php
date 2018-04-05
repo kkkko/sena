@@ -1,6 +1,7 @@
 <?php
 
 include_once(ROOT . '/models/Artticle.php');
+include_once(ROOT . '/models/Comment.php');
 include_once(ROOT . '/models/Category.php');
 include_once(ROOT . '/models/User.php');
 
@@ -28,6 +29,9 @@ class ArticleController
   {
     $categoriesList = array();
     $categoriesList = Category::getCategoriesList();
+  
+    $commentsList = array();
+    $commentsList = Comment::getCommentList($id);
     
     $article = Article::getArticleById($id);
     require_once(ROOT . '/views/article/index.php');

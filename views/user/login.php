@@ -22,8 +22,11 @@
             <input type="submit" name="submit" class="btn btn-default" value="Вход"/>
           </form>
         </div><!--/sign up form-->
-
-
+        <div class="signup-form"><!--sign up form-->
+          <h2>Ещё не зарегистрированы?</h2>
+            <a href="/user/register">Создать аккаунт</a>
+        </div><!--/sign up form-->
+        
         <br/>
         <br/>
       </div>

@@ -98,15 +98,15 @@
       <ul class="header__nav">
         <li class="current"><a href="/index" title="">Home</a></li>
         <li class="has-children">
-          <a href="#0" title="">Categories</a>
+          <a href="#" title="">Categories</a>
           <ul class="sub-menu">
             <?php foreach ($categoriesList as $category): ?>
               <li><a href="/category/<?php echo $category['id']; ?>"><?php echo $category['title']; ?></a></li>
             <?php endforeach; ?>
           </ul>
         </li>
-        <li><a href="about.html" title="">About</a></li>
-        <li><a href="contact.html" title="">Contact</a></li>
+        <li><a href="#" title="">About</a></li>
+        <li><a href="#" title="">Contact</a></li>
       </ul> <!-- end header__nav -->
 
       <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -176,15 +176,15 @@
           <ul class="header__nav">
             <li><a href="/" title="">Home</a></li>
             <li class="has-children current">
-              <a href="/#" title="">Categories</a>
+              <a href="#" title="">Categories</a>
               <ul class="sub-menu">
                 <?php foreach ($categoriesList as $category): ?>
                   <li><a href="/category/<?php echo $category['id']; ?>"><?php echo $category['title']; ?></a></li>
                 <?php endforeach; ?>
               </ul>
             </li>
-            <li><a href="about.html" title="">About</a></li>
-            <li><a href="contact.html" title="">Contact</a></li>
+            <li><a href="#" title="">About</a></li>
+            <li><a href="#" title="">Contact</a></li>
           </ul> <!-- end header__nav -->
 
           <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
