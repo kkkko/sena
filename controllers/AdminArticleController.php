@@ -2,15 +2,21 @@
 include_once(ROOT . '/components/AdminBase.php');
 include_once(ROOT . '/models/Artticle.php');
 include_once(ROOT . '/models/Category.php');
+include_once(ROOT . '/components/Pagination.php');
 
 class AdminArticleController extends AdminBase
 {
-  public static function actionIndex()
+  public static function actionIndex($page)
   {
     $categoriesList = array();
     $categoriesList = Category::getCategoriesList();
+    
     self::checkAdmin();
-    $articleList = Article::getArticleListAdmin();
+    $articleList = Article::getArticleListAdmin($page);
+    $total = Article::getTotalArticleList();
+  
+    $pagination = new Pagination($total, $page, Article::SHOW_BY_DEFAULT, 'page-');
+    
     require_once(ROOT . '/views/admin_article/index.php');
     return true;
   }

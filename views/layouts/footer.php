@@ -17,7 +17,7 @@
         </ul>
 
       </div> <!-- end s-footer__sitelinks -->
-      
+
 
       <div class="col-two md-four mob-full s-footer__social">
 
@@ -96,6 +96,22 @@
 <script src="/template/js/jquery-3.2.1.min.js"></script>
 <script src="/template/js/plugins.js"></script>
 <script src="/template/js/main.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('form #add-comment-btn').click(function() {
+      $.ajax({
+        type: 'POST',
+        url: '/article/<?php echo $article['id']; ?>/add_comment',
+        data: $('form').serialize(),
+        success: function() {
+          $('.commentlist').load('/article/<?php echo $article['id']; ?> .commentlist > *');
+          $('textarea').val('');
+        }
+      });
+    })
+  });
+</script>
 
 </body>
 

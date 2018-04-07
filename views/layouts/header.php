@@ -23,7 +23,6 @@
 
   <!-- script
   ================================================== -->
-  <script src="/template/js/modernizr.js"></script>
   <script src="/template/js/pace.min.js"></script>
 
   <!-- favicons

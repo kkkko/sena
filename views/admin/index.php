@@ -16,7 +16,6 @@
         
         <ul>
           <li><a href="/admin/articles">Управление статьями</a></li>
-          <li><a href="/admin/category">Управление категориями</a></li>
         </ul>
       
       </div>

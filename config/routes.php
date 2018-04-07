@@ -14,6 +14,7 @@ return array(
   'admin/article/delete/([0-9]+)' => 'adminArticle/delete/$1',
   'admin/article/update/([0-9]+)' => 'adminArticle/update/$1',
   'admin/article/create' => 'adminArticle/create',
+  'admin/articles/page-([0-9]+)' => 'adminArticle/index/$1',
   'admin/articles' => 'adminArticle/index',
   'admin' => 'admin/index',
   '' => 'site/index',

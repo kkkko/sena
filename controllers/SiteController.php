@@ -3,10 +3,11 @@
 include_once(ROOT.'/models/Category.php');
 include_once(ROOT.'/models/Artticle.php');
 include_once(ROOT.'/models/User.php');
+include_once(ROOT . '/components/Pagination.php');
 
 class SiteController
 {
-  public function actionIndex() {
+  public function actionIndex($page = 1) {
   
     $categoriesList = array();
     $categoriesList = Category::getCategoriesList();

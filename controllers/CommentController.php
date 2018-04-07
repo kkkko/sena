@@ -9,7 +9,7 @@ class CommentController
     $userId = User::checkLogged();
     if ($userId) {
       
-      if (isset($_POST['submit'])) {
+      if (!empty($_POST)) {
         
         $date = date("d F, Y @ H:i");
         

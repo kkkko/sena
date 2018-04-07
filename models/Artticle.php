@@ -11,7 +11,7 @@ class Article
     
     $db = DB::getConnection();
     
-    $result = $db->query('SELECT * FROM article WHERE status = 1 AND featured = 0 ORDER BY id DESC');
+    $result = $db->query('SELECT * FROM article WHERE status = 1 AND featured = 0 ORDER BY id DESC LIMIT 11');
     
     $i = 0;
     $articleList = array();
@@ -29,12 +29,15 @@ class Article
     return $articleList;
   }
   
-  public static function getArticleListAdmin()
+  public static function getArticleListAdmin($page)
   {
+  
+    $page = intval($page);
+    $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
     
     $db = DB::getConnection();
     
-    $result = $db->query('SELECT * FROM article');
+    $result = $db->query('SELECT * FROM article ORDER BY id DESC LIMIT ' .self::SHOW_BY_DEFAULT . ' OFFSET ' . $offset);
     
     $i = 0;
     $articleList = array();
@@ -126,6 +129,19 @@ class Article
     $db = DB::getConnection();
     
     $result = $db->query("SELECT count(id) AS count FROM article WHERE category_id =" . $categoryId);
+    
+    $result->setFetchMode(PDO::FETCH_ASSOC);
+    $row = $result->fetch();
+    
+    return $row['count'];
+  }
+  
+  public static function getTotalArticleList()
+  {
+    
+    $db = DB::getConnection();
+    
+    $result = $db->query("SELECT count(id) AS count FROM article");
     
     $result->setFetchMode(PDO::FETCH_ASSOC);
     $row = $result->fetch();

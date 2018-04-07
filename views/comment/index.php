@@ -27,13 +27,14 @@
             </div>
 
             <div class="comment__text">
-              <p><?php echo $comment['text']; ?></p>
+              <p style="margin-bottom: 0;"><?php echo $comment['text']; ?></p>
             </div>
 
           </div>
           
-          <?php if (!(User::isGuest()) && ($_SESSION['user'] == $comment['id'])): ?>
-            <form method="post" action="<?php echo $article['id']; ?>/delete_comment/<?php echo $comment['id']; ?>" style="position: absolute;right: 0;top: 0;">
+          <?php if (!(User::isGuest()) && ($_SESSION['user'] == $comment['user_id'])): ?>
+            <form method="post" action="<?php echo $article['id']; ?>/delete_comment/<?php echo $comment['id']; ?>"
+                  style="position: absolute;right: 0;top: 0;">
               <button name="submit" type="submit" style="background: transparent;
     border: 1px solid #aaa;
     padding: 5px 8px;
@@ -53,3 +54,4 @@
     </ol> <!-- end commentlist -->
   </div>
 <?php endif; ?>
+

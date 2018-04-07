@@ -45,7 +45,22 @@
             </tr>
           <?php endforeach; ?>
         </table>
-      
+
+        <div class="row">
+          <div class="col-full">
+            <nav class="pgn">
+              <ul>
+                <?php if($page > 1) {
+                  echo '<li><a class="pgn__prev" href="/admin/articles/page-' .($page - 1) .'">Prev</a></li>';
+                } ?>
+                <?php echo $pagination->get(); ?>
+                <?php if($page < ($total / (Article::SHOW_BY_DEFAULT))) {
+                  echo '<li><a class="pgn__next" href="/admin/articles/page-' .($page + 1) .'">Next</a></li>';
+                } ?>
+            </nav>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
