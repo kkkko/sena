@@ -6,8 +6,7 @@ abstract class AdminBase
   public static function checkAdmin()
   {
     
-    $userId = User::checkLogged();
-    $user = User::getUserById($userId);
+    $user = User::checkLogged();
     
     if ($user['isAdmin'] == 1) {
       return true;

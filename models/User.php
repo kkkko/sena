@@ -125,6 +125,7 @@ class User
     $result->bindParam(':userId', $userId, PDO::PARAM_INT);
   
     $result->setFetchMode(PDO::FETCH_ASSOC);
+    $result->execute();
     
     return $result->fetch();
   }

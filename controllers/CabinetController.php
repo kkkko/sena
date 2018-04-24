@@ -10,8 +10,7 @@ class CabinetController
     $categoriesList = array();
     $categoriesList = Category::getCategoriesList();
     
-    $userId = User::checkLogged();
-    $user = User::getUserById($userId);
+    $user = User::checkLogged();
     
     require_once(ROOT . '/views/cabinet/index.php');
     return true;
