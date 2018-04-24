@@ -100,6 +100,11 @@ class User
     $_SESSION['user'] = $userId;
   }
   
+  public static function logout()
+  {
+    unset($_SESSION['user']);
+  }
+  
   public static function checkLogged()
   {
     if (isset($_SESSION['user'])) {

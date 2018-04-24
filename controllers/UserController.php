@@ -84,7 +84,7 @@ class UserController
   }
   
   public function actionLogout() {
-    unset($_SESSION['user']);
-    header('Location: /index');
+    header('Location: /user/login');
+    User::logout();
   }
 }

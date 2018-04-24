@@ -42,13 +42,16 @@ class Router
         }
         
         $controllerObject = new $controllerName;
-        $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
         
-        if ($result != null) {
-          break;
+        if (method_exists($controllerObject, $actionName)) {
+          $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+          if ($result != null) {
+            break;
+          }
         } else {
-          header( 'Location: /' );
+          header("Location: /404");
         }
+        
       }
     }
     
