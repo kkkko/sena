@@ -21,8 +21,8 @@ class CabinetController
     $categoriesList = array();
     $categoriesList = Category::getCategoriesList();
     
-    $userId = User::checkLogged();
-    $user = User::getUserById($userId);
+    $user = User::checkLogged();
+    $userId = $user['id'];
     
     $name = $user['name'];
     $password = $user['password'];
@@ -30,7 +30,7 @@ class CabinetController
     
     if (isset($_POST['submit'])) {
       $name = $_POST['name'];
-      $password = $_POST['password'];
+      $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
       
       $errors = false;
       
