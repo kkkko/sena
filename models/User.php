@@ -54,7 +54,7 @@ class User
   {
     $db = DB::getConnection();
     
-    $sql = 'SELECT COUNT(*) FROM user WHERE email = :email';
+    $sql = 'SELECT * FROM user WHERE email = :email';
     
     $result = $db->prepare($sql);
     $result->bindParam(':email', $email, PDO::PARAM_STR);
@@ -77,20 +77,19 @@ class User
     }
   }
   
-  public static function checkUserData($email, $password)
+  public static function checkUserData($email)
   {
     $db = DB::getConnection();
     
-    $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
+    $sql = 'SELECT * FROM user WHERE email = :email';
     
     $result = $db->prepare($sql);
     $result->bindParam(':email', $email, PDO::PARAM_STR);
-    $result->bindParam(':password', $password, PDO::PARAM_STR);
     $result->execute();
     
     $user = $result->fetch();
     if ($user) {
-      return $user['id'];
+      return  $user;
     } else {
       return false;
     }
@@ -126,7 +125,6 @@ class User
     $result->bindParam(':userId', $userId, PDO::PARAM_INT);
   
     $result->setFetchMode(PDO::FETCH_ASSOC);
-    $result->execute();
     
     return $result->fetch();
   }

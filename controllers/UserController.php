@@ -19,7 +19,7 @@ class UserController
     if (isset($_POST['submit'])) {
       $name = $_POST['name'];
       $email = $_POST['email'];
-      $password = $_POST['password'];
+      $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
       
       $errors = false;
       
@@ -69,14 +69,15 @@ class UserController
       }
       
 
-      $userId = User::checkUserData( $email, $password);
-      
-      if ($userId == false)  {
-        $errors[] = 'Вы ввели неправильные данные';
-      } else {
-        User::auth($userId);
+      $user = User::checkUserData( $email);
+  
+      if ($user != false || password_verify('$password', $user['password'])) {
+        User::auth($user);
         header('Location: /cabinet/');
-      }
+      } else {
+        $errors[] = 'Вы ввели неправильные данные';
+      };
+      
     }
     require_once(ROOT . '/views/user/login.php');
     return true;
